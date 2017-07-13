@@ -4,16 +4,16 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim intGameLoadWait, intMapLoadWait, intCustomWait, boolCustomIdle
+Dim dblGameLoadWait, dblMapLoadWait, intCustomWait, boolCustomIdle
 
 
 
 '///////////// USER VARIABLES /////////////
 
 ' Time to wait for game to load in seconds
-intGameLoadWait = 20
+dblGameLoadWait = 20
 ' Time to wait for map to load in seconds
-intMapLoadWait = 6
+dblMapLoadWait = 0.1
 
 '///////////// USER VARIABLES /////////////
 
@@ -50,6 +50,7 @@ WaitMin(intCustomWait)
 StartKF2
 If boolCustomIdle = True Then
     WaitMin(30)
+    PopUp10Sec
     StartKF2
 End If
 CollectItemDrop
@@ -57,6 +58,7 @@ Wait24Hr
 Do
     StartKF2
     WaitMin(30)
+    PopUp10Sec
     StartKF2
     CollectItemDrop
     Wait24Hr
@@ -75,7 +77,12 @@ Sub StartKF2
     Next
     WScript.Echo "Starting Killing Floor 2"
     WshShell.Run "C:\PROGRA~2\Steam\STEAMA~1\common\KILLIN~1\Binaries\Win64\KFGame.exe -nostartupmovies"
-    WScript.Sleep intGameLoadWait * 1000
+    WScript.Sleep dblGameLoadWait * 1000
+End Sub
+
+Sub PopUp10Sec
+    WshShell.Popup "Please switch to Killing Floor 2, then do not touch the mouse or keyboard.", 10, "KF2 Drop Farm"
+    WScript.Sleep 10000
 End Sub
 
 Sub CollectItemDrop
@@ -85,20 +92,18 @@ Sub CollectItemDrop
             Exit For
         End If
     Next
-    WshShell.Popup "Please switch to Killing Floor 2, then do not touch the mouse or keyboard.", 10, "KF2 Drop Farm"
-    WScript.Sleep 10000
     ' Focus KF2 window
     WshShell.AppActivate objKF2Process
     ' Open KF-ZedLanding
     WScript.Echo "Opening map KF-ZedLanding"
     WshShell.SendKeys "{F3}open KF-ZedLanding{ENTER}"
 	' Wait for map load
-    WScript.Sleep intMapLoadWait * 1000
+    WScript.Sleep dblMapLoadWait * 1000
     ' Press Ready Up
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"
     WshShell.SendKeys "{F3}startfire{ENTER}"
-    WScript.Sleep 5000
+    WScript.Sleep 6000
     ' Suicide
     WshShell.AppActivate objKF2Process
     WScript.Echo "Suiciding"
@@ -117,5 +122,5 @@ End Sub
 
 Sub Wait24Hr
     WScript.Echo "Waiting for 23.5 hours"
-    WScript.Sleep 84600000 - intGameLoadWait * 1000
+    WScript.Sleep 84600000 - dblGameLoadWait * 1000
 End Sub
