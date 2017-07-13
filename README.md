@@ -11,6 +11,8 @@ It requires you to answer 2 questions before it becomes automated.
 1. KF2 must run for 30 minutes total before you are eligible for the next drop. Idle KF2 for 30 minutes before first run? [Y/N]
 2. You are eligible for drops 24 hours after your last drop. Minutes to wait before first run (not including idle time)? [integer]
 
+__Depending on the performance of your computer, you may need to adjust the wait times for game launch and map load.__ Do this by opening the .vbs file in Notepad, the variables are clearly labeled near the top of the script.
+
 ## What it does
 
 1. Starts Killing Floor 2
