@@ -82,7 +82,6 @@ End Sub
 
 Sub PopUp10Sec
     WshShell.Popup "Please switch to Killing Floor 2, then do not touch the mouse or keyboard.", 10, "KF2 Drop Farm"
-    WScript.Sleep 10000
 End Sub
 
 Sub CollectItemDrop
