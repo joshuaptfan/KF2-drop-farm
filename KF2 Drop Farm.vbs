@@ -35,10 +35,6 @@ Else
     boolCustomIdle = False
 End If
 WScript.Echo
-WScript.Echo "You are eligible for drops 24 hours after your last drop."
-WScript.StdOut.Write "Minutes to wait before first run (not including idle time)? [integer] "
-intCustomWait = WScript.StdIn.ReadLine
-WScript.Echo
 WScript.Echo "////////////  END OF USER INPUT  ////////////"
 WScript.Echo
 WScript.Echo "Thank you, you may now leave the computer."
@@ -46,7 +42,6 @@ WScript.Echo "Disable sleep and hibernation settings."
 WScript.Echo "You can continue to use the computer while the script is running."
 WScript.Echo
 
-WaitMin(intCustomWait)
 StartKF2
 If boolCustomIdle = True Then
     WaitMin(30)
@@ -61,7 +56,7 @@ Do
     PopUp10Sec
     StartKF2
     CollectItemDrop
-    Wait24Hr
+    Wait12Hr
 Loop
 
 
@@ -102,7 +97,7 @@ Sub CollectItemDrop
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"
     WshShell.SendKeys "{F3}startfire{ENTER}"
-    WScript.Sleep 6000
+    WScript.Sleep 8000
     ' Suicide
     WshShell.AppActivate objKF2Process
     WScript.Echo "Suiciding"
@@ -119,7 +114,7 @@ Sub WaitMin(intMin)
     WScript.Sleep intMin * 60000
 End Sub
 
-Sub Wait24Hr
-    WScript.Echo "Waiting for 23.5 hours"
-    WScript.Sleep 84600000 - dblGameLoadWait * 1000
+Sub Wait12Hr
+    WScript.Echo "Waiting for 11.5 hours"
+    WScript.Sleep 41400000 - dblGameLoadWait * 1000
 End Sub
