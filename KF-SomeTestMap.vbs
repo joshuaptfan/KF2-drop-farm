@@ -4,16 +4,14 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim dblGameLoadWait, dblMapLoadWait
+Dim dblGameLoadWait
 
 
 
 '///////////// USER VARIABLES /////////////
 
 ' Time to wait for game to load in seconds
-dblGameLoadWait = 20
-' Time to wait for map to load in seconds
-dblMapLoadWait = 0.1
+dblGameLoadWait = 30
 
 '///////////// USER VARIABLES /////////////
 
@@ -57,8 +55,7 @@ Sub OpenSomeTestMap
     ' Open KF-ZedLanding
     WScript.Echo "Opening map KF-SomeTestMap"
     WshShell.SendKeys "{F3}open KF-SomeTestMap?game=SomeTestMap.SomeTestMap{ENTER}"
-	' Wait for map load
-    WScript.Sleep dblMapLoadWait * 1000
+    WScript.Sleep 100
     ' Press Ready Up
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"

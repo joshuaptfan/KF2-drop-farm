@@ -4,16 +4,14 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim dblGameLoadWait, dblMapLoadWait, intCustomWait, boolCustomIdle
+Dim dblGameLoadWait, boolCustomIdle
 
 
 
 '///////////// USER VARIABLES /////////////
 
 ' Time to wait for game to load in seconds
-dblGameLoadWait = 20
-' Time to wait for map to load in seconds
-dblMapLoadWait = 0.1
+dblGameLoadWait = 30
 
 '///////////// USER VARIABLES /////////////
 
@@ -22,7 +20,7 @@ dblMapLoadWait = 0.1
 WScript.Echo "Killing Floor 2 drop farming script"
 WScript.Echo "Author: /u/killall-q"
 WScript.Echo
-WScript.Echo "This script loops every 24 hours, infinitely."
+WScript.Echo "This script loops every 12 hours, indefinitely."
 WScript.Echo "Close this console window to exit the script."
 WScript.Echo
 WScript.Echo "//////////// USER INPUT REQUIRED ////////////"
@@ -49,7 +47,7 @@ If boolCustomIdle = True Then
     StartKF2
 End If
 CollectItemDrop
-Wait24Hr
+Wait12Hr
 Do
     StartKF2
     WaitMin(30)
@@ -91,8 +89,7 @@ Sub CollectItemDrop
     ' Open KF-ZedLanding
     WScript.Echo "Opening map KF-ZedLanding"
     WshShell.SendKeys "{F3}open KF-ZedLanding{ENTER}"
-	' Wait for map load
-    WScript.Sleep dblMapLoadWait * 1000
+    WScript.Sleep 100
     ' Press Ready Up
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"

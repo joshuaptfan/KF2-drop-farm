@@ -13,7 +13,7 @@ KF2 must run for 30 minutes total before you are eligible for the next drop.
 Idle KF2 for 30 minutes before first run? [Y/N]
 ```
 
-__Depending on the performance of your computer, you may need to adjust the wait times for game launch and map load.__ Do this by opening the .vbs file in Notepad, the variables are clearly labeled near the top of the script.
+__Depending on the performance of your computer, you may need to adjust the wait time for game launch.__ Do this by opening the .vbs file in Notepad, the variable is clearly labeled near the top of the script.
 
 ## What it does
 
@@ -46,7 +46,7 @@ You must have downloaded KF-SomeTestMap beforehand by [subscribing to the Steam 
 
 Download __KF-SomeTestMap.vbs__ to anywhere and run it.
 
-__Depending on the performance of your computer, you may need to adjust the wait times for game launch and map load.__ Do this by opening the .vbs file in Notepad, the variables are clearly labeled near the top of the script.
+__Depending on the performance of your computer, you may need to adjust the wait time for game launch.__ Do this by opening the .vbs file in Notepad, the variable is clearly labeled near the top of the script.
 
 ## What it does
 
