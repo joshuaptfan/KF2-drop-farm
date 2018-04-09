@@ -11,7 +11,7 @@ Dim dblGameLoadWait, boolCustomIdle
 '///////////// USER VARIABLES /////////////
 
 ' Time to wait for game to load in seconds
-dblGameLoadWait = 30
+dblGameLoadWait = 40
 
 '///////////// USER VARIABLES /////////////
 
@@ -20,7 +20,7 @@ dblGameLoadWait = 30
 WScript.Echo "Killing Floor 2 event drop farming script"
 WScript.Echo "Author: /u/killall-q"
 WScript.Echo
-WScript.Echo "This script loops every 4 hours, indefinitely."
+WScript.Echo "This script loops every 3.5 hours, indefinitely."
 WScript.Echo "Close this console window to exit the script."
 WScript.Echo
 WScript.Echo "//////////// USER INPUT REQUIRED ////////////"
@@ -47,14 +47,14 @@ If boolCustomIdle = True Then
     StartKF2
 End If
 CollectItemDrop
-Wait4Hr
+Wait3Hr
 Do
     StartKF2
     WaitMin(30)
     PopUp10Sec
     StartKF2
     CollectItemDrop
-    Wait4Hr
+    Wait3Hr
 Loop
 
 
@@ -111,7 +111,7 @@ Sub WaitMin(intMin)
     WScript.Sleep intMin * 60000
 End Sub
 
-Sub Wait4Hr
-    WScript.Echo "Waiting for 3.5 hours"
-    WScript.Sleep 12600000 - dblGameLoadWait * 1000
+Sub Wait3Hr
+    WScript.Echo "Waiting for 3 hours"
+    WScript.Sleep 10800000 - dblGameLoadWait * 1000
 End Sub

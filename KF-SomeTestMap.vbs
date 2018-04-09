@@ -11,7 +11,7 @@ Dim dblGameLoadWait
 '///////////// USER VARIABLES /////////////
 
 ' Time to wait for game to load in seconds
-dblGameLoadWait = 30
+dblGameLoadWait = 40
 
 '///////////// USER VARIABLES /////////////
 

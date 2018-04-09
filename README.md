@@ -18,14 +18,14 @@ __Depending on the performance of your computer, you may need to adjust the wait
 ## What it does
 
 1. Starts Killing Floor 2
-2. Waits 30 minutes if user opted to before first run
+2. Waits for 30 minutes if user opted to before first run
 3. Opens map KF-ZedLanding
 4. Presses the "Ready Up" button
 5. Commits suicide
 6. Quits game
 7. Waits for 11.5 hours
 8. Starts Killing Floor 2
-9. Waits 30 minutes
+9. Waits for 30 minutes
 10. Repeat from step 3
 
 All in-game actions are done by console commands.
