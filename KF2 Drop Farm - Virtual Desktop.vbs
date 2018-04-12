@@ -5,7 +5,7 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim intInactiveWait, intCustomWait, intGameLoadWait, boolSelectMode, boolCustomIdle
+Dim intInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
 
 
 
@@ -33,22 +33,23 @@ Do
     WScript.Echo "[2] Event         Collect drop every 3.5 hours"
     WScript.Echo "[3] Event 2XP     Collect drop every 2 hours"
     WScript.StdOut.Write "Selection: "
-    boolSelectMode = True
     Dim strMode
     strMode = WScript.StdIn.ReadLine
     Select Case strMode
         Case "1"
             intInactiveWait = 12
+            Exit Do
         Case "2"
             intInactiveWait = 3.5
+            Exit Do
         Case "3"
             intInactiveWait = 2
+            Exit Do
         Case Else
             WScript.Echo
             WScript.Echo "ERROR: Invalid selection"
-            boolSelectMode = False
     End Select
-Loop Until boolSelectMode = True
+Loop
 WScript.Echo
 WScript.Echo "You are eligible for drops " & intInactiveWait & " hours after your last drop."
 WScript.StdOut.Write "Minutes to wait before first run (not including idle time)? [number]: "
