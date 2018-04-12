@@ -17,7 +17,7 @@ dblGameLoadWait = 40
 
 
 
-WScript.Echo "Killing Floor 2 SomeTestMap Launcher"
+WScript.Echo "Killing Floor 2 SomeTestMap launcher"
 WScript.Echo "Author: /u/killall-q"
 WScript.Echo
 WScript.Echo "You must have KF-SomeTestMap installed."

@@ -1,4 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+Set objApp = WScript.CreateObject("Shell.Application")
 If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WshShell.Run "cscript //nologo """ & WScript.ScriptFullName & """", 1, False
     WScript.Quit
@@ -17,9 +18,11 @@ intGameLoadWait = 40
 
 
 
-WScript.Echo "Killing Floor 2 drop farming script"
+WScript.Echo "Killing Floor 2 drop farming script - no quit"
 WScript.Echo "Author: /u/killall-q"
 WScript.Echo
+WScript.Echo "Windows 10 is required. KF2 will be kept running on the 2nd virtual desktop."
+WScript.Echo "You can also move this console window there (press Win+Tab, drag) to keep it out of the way."
 WScript.Echo "Close this console window to exit the script."
 WScript.Echo
 WScript.Echo "//////////// USER INPUT REQUIRED ////////////"
@@ -49,11 +52,10 @@ WScript.Echo "Disable sleep and hibernation settings."
 WScript.Echo "You can continue to use the computer while the script is running."
 WScript.Echo
 
-WaitMin(intCustomWait)
 StartKF2
+WaitMin(intCustomWait)
 If boolCustomIdle = True Then
     WaitMin(30)
-    PopUp10Sec
     StartKF2
 End If
 CollectItemDrop
@@ -61,7 +63,6 @@ WaitInactive
 Do
     StartKF2
     WaitMin(30)
-    PopUp10Sec
     StartKF2
     CollectItemDrop
     WaitInactive
@@ -103,13 +104,18 @@ Sub StartKF2
             Exit Sub
         End If
     Next
+    WScript.Echo "Switching to virtual desktop 2"
+    objApp.WindowSwitcher
+    WScript.Sleep 100
+    WshShell.SendKeys "{TAB}"
+    WScript.Sleep 100
+    WshShell.SendKeys "{RIGHT}"
+    WScript.Sleep 100
+    WshShell.SendKeys "{ENTER}"
     WScript.Echo "Starting Killing Floor 2"
     WshShell.Run "C:\PROGRA~2\Steam\STEAMA~1\common\KILLIN~1\Binaries\Win64\KFGame.exe -nostartupmovies"
     WScript.Sleep intGameLoadWait * 1000
-End Sub
-
-Sub PopUp10Sec
-    WshShell.Popup "Please switch to Killing Floor 2, then do not touch the mouse or keyboard.", 10, "KF2 Drop Farm"
+    FocusVirtDesktop1
 End Sub
 
 Sub CollectItemDrop
@@ -129,16 +135,29 @@ Sub CollectItemDrop
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"
     WshShell.SendKeys "{F3}startfire{ENTER}"
+    FocusVirtDesktop1
     WScript.Sleep 8000
     ' Suicide
     WshShell.AppActivate objKF2Process
     WScript.Echo "Suiciding"
     WshShell.SendKeys "{F3}suicide{ENTER}"
+    FocusVirtDesktop1
     WScript.Sleep 20000
-    ' Quit game
+    ' Return to home menu
     WshShell.AppActivate objKF2Process
-    WScript.Echo "Quitting game"
-    WshShell.SendKeys "{F3}exit{ENTER}"
+    WScript.Sleep 200
+    WScript.Echo "Returning to home menu"
+    WshShell.SendKeys "{F3}disconnect{ENTER}"
+    FocusVirtDesktop1
+End Sub
+
+Sub FocusVirtDesktop1
+    WScript.Echo "Switching to virtual desktop 1"
+    objApp.WindowSwitcher
+    WScript.Sleep 100
+    WshShell.SendKeys "{TAB}"
+    WScript.Sleep 100
+    WshShell.SendKeys "{ENTER}"
 End Sub
 
 Sub WaitMin(intMin)
