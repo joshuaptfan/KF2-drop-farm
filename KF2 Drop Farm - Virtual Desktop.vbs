@@ -111,7 +111,7 @@ Sub StartKF2
     WScript.Sleep 100
     WshShell.SendKeys "{ENTER}"
     WScript.Echo "Starting Killing Floor 2"
-    WshShell.Run "C:\PROGRA~2\Steam\STEAMA~1\common\KILLIN~1\Binaries\Win64\KFGame.exe -nostartupmovies"
+    WshShell.Run "C:\PROGRA~2\Steam\Steam.exe -applaunch 232090 -nostartupmovies"
     WScript.Sleep intGameLoadWait * 1000
     FocusVirtDesktop1
 End Sub

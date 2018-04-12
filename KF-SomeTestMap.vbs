@@ -4,14 +4,14 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim dblGameLoadWait
+Dim intGameLoadWait
 
 
 
 '///////////// USER VARIABLES /////////////
 
 ' Time to wait for game to load in seconds
-dblGameLoadWait = 40
+intGameLoadWait = 40
 
 '///////////// USER VARIABLES /////////////
 
@@ -39,8 +39,8 @@ Sub StartKF2
         End If
     Next
     WScript.Echo "Starting Killing Floor 2"
-    WshShell.Run "C:\PROGRA~2\Steam\STEAMA~1\common\KILLIN~1\Binaries\Win64\KFGame.exe -nostartupmovies"
-    WScript.Sleep dblGameLoadWait * 1000
+    WshShell.Run "C:\PROGRA~2\Steam\Steam.exe -applaunch 232090 -nostartupmovies"
+    WScript.Sleep intGameLoadWait * 1000
 End Sub
 
 Sub OpenSomeTestMap
