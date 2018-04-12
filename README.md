@@ -45,7 +45,7 @@ The script works without problems when the computer is unattended, as the game w
 
 ## Virtual desktop version
 
-This modification of the original script will keep KF2 running continuously on the 2nd virtual desktop, so as to be less distracting to users. The script will give KF2 focus for as little time as possible, switching back to the 1st virtual desktop after every action. Windows 10 is required.
+This modification of the original script will keep KF2 running continuously on the 2nd virtual desktop, so as to be less distracting to users. The script will give KF2 focus for as little time as possible, switching back to the 1st virtual desktop after every action. __Windows 10 is required.__
 
 # KF-SomeTestMap Launcher
 

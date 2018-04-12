@@ -27,7 +27,27 @@ WScript.Echo "Close this console window to exit the script."
 WScript.Echo
 WScript.Echo "//////////// USER INPUT REQUIRED ////////////"
 Do
-    boolSelectMode = SelectMode()
+    WScript.Echo
+    WScript.Echo "Select one of the following:"
+    WScript.Echo "[1] Normal        Collect drop every 12 hours"
+    WScript.Echo "[2] Event         Collect drop every 3.5 hours"
+    WScript.Echo "[3] Event 2XP     Collect drop every 2 hours"
+    WScript.StdOut.Write "Selection: "
+    boolSelectMode = True
+    Dim strMode
+    strMode = WScript.StdIn.ReadLine
+    Select Case strMode
+        Case "1"
+            intInactiveWait = 12
+        Case "2"
+            intInactiveWait = 3.5
+        Case "3"
+            intInactiveWait = 2
+        Case Else
+            WScript.Echo
+            WScript.Echo "ERROR: Invalid selection"
+            boolSelectMode = False
+    End Select
 Loop Until boolSelectMode = True
 WScript.Echo
 WScript.Echo "You are eligible for drops " & intInactiveWait & " hours after your last drop."
@@ -69,31 +89,6 @@ Do
 Loop
 
 
-
-Function SelectMode()
-    WScript.Echo
-    WScript.Echo "Select one of the following:"
-    WScript.Echo "[1] Normal        Collect drop every 12 hours"
-    WScript.Echo "[2] Event         Collect drop every 3.5 hours"
-    WScript.Echo "[3] Event 2XP     Collect drop every 2 hours"
-    WScript.StdOut.Write "Selection: "
-    Dim strMode
-    strMode = WScript.StdIn.ReadLine
-    Select Case strMode
-        Case "1"
-            intInactiveWait = 12
-        Case "2"
-            intInactiveWait = 3.5
-        Case "3"
-            intInactiveWait = 2
-        Case Else
-            WScript.Echo
-            WScript.Echo "ERROR: Invalid selection"
-            SelectMode = False
-            Exit Function
-    End Select
-    SelectMode = True
-End Function
 
 Sub StartKF2
     WScript.Echo
@@ -160,13 +155,13 @@ Sub FocusVirtDesktop1
     WshShell.SendKeys "{ENTER}"
 End Sub
 
-Sub WaitMin(intMin)
+Function WaitMin(intMin)
     If intMin > 0 Then
         WScript.Echo
         WScript.Echo "Waiting for " & intMin & " minutes"
     End If
     WScript.Sleep intMin * 60000
-End Sub
+End Function
 
 Sub WaitInactive
     WScript.Echo "Waiting for " & intInactiveWait & " hours"
