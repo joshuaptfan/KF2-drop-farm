@@ -58,7 +58,7 @@ If Not IsNumeric(intCustomWait) Then
     intCustomWait = 0
 End If
 WScript.Echo
-WScript.Echo "KF2 must run for 30 minutes uninterrupted before you are eligible for the next drop."
+WScript.Echo "KF2 must run for 30 consecutive minutes before you are eligible for the next drop."
 WScript.StdOut.Write "Idle KF2 for 30 minutes before first run? [Y/N]: "
 If LCase(WScript.StdIn.ReadLine) = "y" Then
     boolCustomIdle = True

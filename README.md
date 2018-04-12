@@ -18,7 +18,7 @@ Selection:
 You are eligible for drops X hours after your last drop.
 Minutes to wait before first run (not including idle time)? [number]:
 
-KF2 must run for 30 minutes total before you are eligible for the next drop.
+KF2 must run for 30 consecutive minutes before you are eligible for the next drop.
 Idle KF2 for 30 minutes before first run? [Y/N]:
 ```
 
