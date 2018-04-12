@@ -5,7 +5,7 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim intInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
+Dim dblInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
 
 
 
@@ -37,13 +37,13 @@ Do
     strMode = WScript.StdIn.ReadLine
     Select Case strMode
         Case "1"
-            intInactiveWait = 11.5
+            dblInactiveWait = 11.5
             Exit Do
         Case "2"
-            intInactiveWait = 3
+            dblInactiveWait = 3
             Exit Do
         Case "3"
-            intInactiveWait = 1.5
+            dblInactiveWait = 1.5
             Exit Do
         Case Else
             WScript.Echo
@@ -51,7 +51,7 @@ Do
     End Select
 Loop
 WScript.Echo
-WScript.Echo "You are eligible for drops " & intInactiveWait + 0.5 & " hours after your last drop."
+WScript.Echo "You are eligible for drops " & dblInactiveWait + 0.5 & " hours after your last drop."
 WScript.StdOut.Write "Minutes to wait before first run (not including idle time)? [number]: "
 intCustomWait = WScript.StdIn.ReadLine
 If Not IsNumeric(intCustomWait) Then
@@ -77,6 +77,7 @@ StartKF2
 WaitMin(intCustomWait)
 If boolCustomIdle = True Then
     WaitMin(30)
+    PopUpWarn
     StartKF2
 End If
 CollectItemDrop
@@ -84,6 +85,7 @@ WaitInactive
 Do
     StartKF2
     WaitMin(30)
+    PopUpWarn
     StartKF2
     CollectItemDrop
     WaitInactive
@@ -112,6 +114,10 @@ Sub StartKF2
     WshShell.Run "C:\PROGRA~2\Steam\STEAMA~1\common\KILLIN~1\Binaries\Win64\KFGame.exe -nostartupmovies"
     WScript.Sleep intGameLoadWait * 1000
     FocusVirtDesktop1
+End Sub
+
+Sub PopUpWarn
+    WshShell.Popup "Please do not touch the mouse or keyboard.", 10, "KF2 Drop Farm"
 End Sub
 
 Sub CollectItemDrop
@@ -165,6 +171,6 @@ Function WaitMin(intMin)
 End Function
 
 Sub WaitInactive
-    WScript.Echo "Waiting for " & intInactiveWait & " hours"
-    WScript.Sleep intInactiveWait * 3600000 - intGameLoadWait * 1000
+    WScript.Echo "Waiting for " & dblInactiveWait & " hours"
+    WScript.Sleep dblInactiveWait * 3600000 - intGameLoadWait * 1000
 End Sub
