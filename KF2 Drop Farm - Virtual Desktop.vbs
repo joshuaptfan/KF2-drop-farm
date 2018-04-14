@@ -105,11 +105,7 @@ Sub StartKF2
     WScript.Echo "Switching to virtual desktop 2"
     objApp.WindowSwitcher
     WScript.Sleep 100
-    WshShell.SendKeys "{TAB}"
-    WScript.Sleep 100
-    WshShell.SendKeys "{RIGHT}"
-    WScript.Sleep 100
-    WshShell.SendKeys "{ENTER}"
+    WshShell.SendKeys "{TAB}{RIGHT}{ENTER}"
     WScript.Echo "Starting Killing Floor 2"
     WshShell.Run "C:\PROGRA~2\Steam\Steam.exe -applaunch 232090 -nostartupmovies"
     WScript.Sleep intGameLoadWait * 1000
@@ -157,9 +153,7 @@ Sub FocusVirtDesktop1
     WScript.Echo "Switching to virtual desktop 1"
     objApp.WindowSwitcher
     WScript.Sleep 100
-    WshShell.SendKeys "{TAB}"
-    WScript.Sleep 100
-    WshShell.SendKeys "{ENTER}"
+    WshShell.SendKeys "{TAB}{ENTER}"
 End Sub
 
 Function WaitMin(intMin)
