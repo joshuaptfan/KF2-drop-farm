@@ -5,7 +5,7 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim dblInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
+Dim dblInactiveWait, intCustomWait, intGameLoadWait, intMapLoadWait, boolCustomIdle
 
 
 
@@ -13,6 +13,9 @@ Dim dblInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
 
 ' Time to wait for game to load in seconds
 intGameLoadWait = 40
+
+' Time to wait for map to load in seconds
+intMapLoadWait = 8
 
 '///////////// USER VARIABLES /////////////
 
@@ -22,6 +25,7 @@ WScript.Echo "Killing Floor 2 drop farming script - no quit"
 WScript.Echo "Author: /u/killall-q"
 WScript.Echo
 WScript.Echo "Windows 10 is required. KF2 will be kept running on the 2nd virtual desktop."
+WScript.Echo "KF2's display setting must be windowed or borderless."
 WScript.Echo "You can also move this console window there (press Win+Tab, drag) to keep it out of the way."
 WScript.Echo "Close this console window to exit the script."
 WScript.Echo
@@ -125,16 +129,16 @@ Sub CollectItemDrop
     Next
     ' Focus KF2 window
     WshShell.AppActivate objKF2Process
-    ' Open KF-ZedLanding
-    WScript.Echo "Opening map KF-ZedLanding"
-    WshShell.SendKeys "{F3}open KF-ZedLanding{ENTER}"
-    WScript.Sleep 100
+    ' Open KF-Farmhouse
+    WScript.Echo "Opening map KF-Farmhouse"
+    WshShell.SendKeys "{F3}open KF-Farmhouse{ENTER}"
+    WScript.Sleep 1000
     ' Press Ready Up
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"
     WshShell.SendKeys "{F3}startfire{ENTER}"
     FocusVirtDesktop1
-    WScript.Sleep 8000
+    WScript.Sleep intMapLoadWait * 1000
     ' Suicide
     WshShell.AppActivate objKF2Process
     WScript.Echo "Suiciding"

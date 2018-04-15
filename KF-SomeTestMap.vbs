@@ -55,7 +55,7 @@ Sub OpenSomeTestMap
     ' Open KF-ZedLanding
     WScript.Echo "Opening map KF-SomeTestMap"
     WshShell.SendKeys "{F3}open KF-SomeTestMap?game=SomeTestMap.SomeTestMap{ENTER}"
-    WScript.Sleep 100
+    WScript.Sleep 1000
     ' Press Ready Up
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"

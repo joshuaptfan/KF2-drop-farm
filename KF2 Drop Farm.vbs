@@ -4,7 +4,7 @@ If Instr(1, WScript.FullName, "CScript", vbTextCompare) = 0 Then
     WScript.Quit
 End If
 
-Dim dblInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
+Dim dblInactiveWait, intCustomWait, intGameLoadWait, intMapLoadWait, boolCustomIdle
 
 
 
@@ -12,6 +12,9 @@ Dim dblInactiveWait, intCustomWait, intGameLoadWait, boolCustomIdle
 
 ' Time to wait for game to load in seconds
 intGameLoadWait = 40
+
+' Time to wait for map to load in seconds
+intMapLoadWait = 8
 
 '///////////// USER VARIABLES /////////////
 
@@ -117,15 +120,15 @@ Sub CollectItemDrop
     Next
     ' Focus KF2 window
     WshShell.AppActivate objKF2Process
-    ' Open KF-ZedLanding
-    WScript.Echo "Opening map KF-ZedLanding"
-    WshShell.SendKeys "{F3}open KF-ZedLanding{ENTER}"
-    WScript.Sleep 100
+    ' Open KF-Farmhouse
+    WScript.Echo "Opening map KF-Farmhouse"
+    WshShell.SendKeys "{F3}open KF-Farmhouse{ENTER}"
+    WScript.Sleep 1000
     ' Press Ready Up
     WshShell.AppActivate objKF2Process
     WScript.Echo "Pressing Ready Up"
     WshShell.SendKeys "{F3}startfire{ENTER}"
-    WScript.Sleep 8000
+    WScript.Sleep intMapLoadWait * 1000
     ' Suicide
     WshShell.AppActivate objKF2Process
     WScript.Echo "Suiciding"

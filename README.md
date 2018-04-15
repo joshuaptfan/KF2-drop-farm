@@ -22,13 +22,13 @@ KF2 must run for 30 consecutive minutes before you are eligible for the next dro
 Idle KF2 for 30 minutes before first run? [Y/N]:
 ```
 
-__Depending on the performance of your computer, you may need to adjust the wait time for game launch.__ Do this by opening the .vbs file in Notepad, the variable is clearly labeled near the top of the script.
+__Depending on the performance of your computer, you may need to adjust the wait times for game launch and map load.__ Do this by opening the .vbs file in Notepad, the variables `intGameLoadWait` and `intMapLoadWait` are clearly labeled near the top of the script.
 
 ## What it does
 
 1. Starts Killing Floor 2
 2. Waits for 30 minutes if user opted to before first run
-3. Opens map KF-ZedLanding
+3. Opens map KF-Farmhouse
 4. Presses the "Ready Up" button
 5. Commits suicide
 6. Quits game
@@ -45,7 +45,9 @@ The script works without problems when the computer is unattended, as the game w
 
 ## Virtual desktop version
 
-This modification of the original script will keep KF2 running continuously on the 2nd virtual desktop, so as to be less distracting to users. The script will give KF2 focus for as little time as possible, switching back to the 1st virtual desktop after every action. __Windows 10 is required.__
+This modification of the original script will keep KF2 running continuously on the 2nd virtual desktop, so as to be less distracting to users. The script will give KF2 focus for as little time as possible, switching back to the 1st virtual desktop after every action.
+
+KF2's display setting must be windowed or borderless. __Windows 10 is required.__
 
 # KF-SomeTestMap Launcher
 
@@ -59,7 +61,7 @@ You must have downloaded KF-SomeTestMap beforehand by [subscribing to the Steam 
 
 Download __KF-SomeTestMap.vbs__ to anywhere and run it.
 
-__Depending on the performance of your computer, you may need to adjust the wait time for game launch.__ Do this by opening the .vbs file in Notepad, the variable is clearly labeled near the top of the script.
+__Depending on the performance of your computer, you may need to adjust the wait time for game launch.__ Do this by opening the .vbs file in Notepad, the variable `intGameLoadWait` is clearly labeled near the top of the script.
 
 ## What it does
 
