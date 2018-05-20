@@ -60,10 +60,10 @@ End If
 WScript.Echo
 WScript.Echo "KF2 must run for 30 consecutive minutes before you are eligible for the next drop."
 WScript.StdOut.Write "Idle KF2 for 30 minutes before first run? [Y/N]: "
-If LCase(WScript.StdIn.ReadLine) = "y" Then
-    boolCustomIdle = True
-Else
+If LCase(WScript.StdIn.ReadLine) = "n" Then
     boolCustomIdle = False
+Else
+    boolCustomIdle = True
 End If
 WScript.Echo
 WScript.Echo "////////////  END OF USER INPUT  ////////////"
